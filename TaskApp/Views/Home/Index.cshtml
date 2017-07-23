@@ -1,0 +1,46 @@
+﻿@model string
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    
+  
+    <div class="row">
+      
+        <div class="col-md-12">
+            <form>
+                <table class="table table-bordered " id="taskTable">
+                    <tr>
+                        <th colspan="2" align="left"></th>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="left"><textarea name="description" rows="3" id="description" ng-model="task.description" style="min-width: 100%"> </textarea></td>
+                        <td><button type="button" ng-disabled="!task.description" style="width:40%;" data-ng-click="addNewTask(task)">Add Task</button></td>
+                    </tr>
+                </table>
+
+            </form>
+
+            <table class="table table-bordered">
+
+                <tbody>
+                    <tr>
+
+                    <tr ng-repeat="t in tasksModel" >
+                        <td ng-show="false"> {{t.id}} </td>
+                        <td><input type="checkbox" ng-model="t.completed"  ng-click=checkCompleted($index) ng-checked="{{t.completed}}"></td>
+                        <td ng-class="{'selectedrow': t.completed}"> {{t.description}} </td>
+                        <td><button type="button" data-ng-click="removeTask($index,t.id)" class="delete">Remove</button></td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+         
+            </div>
+    </div>
+
+</div>
